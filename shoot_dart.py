@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
+
 """
 Created on Fri Jun 12 11:45:30 2015
 
 """
-import os
-import random
+import os, random
+
 
 display_list = []
 history_list = []
@@ -45,13 +47,19 @@ d0_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d0])
 
 dart_array = []
 
-for i in range(5): #挑出d0_array 中
+for i in range(5): 
     dart1 = random.choice(d0_array)
     dart_array.append(dart1)
     #print (dart1)
-    
-    
-for i in range(5):
-    print (dart_array[i])
+
+with open('C:/1save/jpStock/dart/test.csv', 'xt', encoding = 'shift-jis') as f:
+    for i in range(5):
+        f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
+        #f.write (str(dart_array[i]).strip("'")[1:-1]+ '\n\r')
+        #f.write(str(dart_array[i]))
 #for i in range(0,5):
 #    print ("d" + str(i) +"=" +  str(random.randint(0,2000))
+
+
+#for i in range(5):
+#        print (str(dart_array[i]).replace('\'', '')[1:-1])
