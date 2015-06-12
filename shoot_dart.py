@@ -43,9 +43,15 @@ print (history_list[4])
 d0_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d0])
 #print (d0_array[2])
 
-for i in range(5):
-    dart1 = random.choice(d0_array)
-    print (dart1)
+dart_array = []
 
+for i in range(5): #挑出d0_array 中
+    dart1 = random.choice(d0_array)
+    dart_array.append(dart1)
+    #print (dart1)
+    
+    
+for i in range(5):
+    print (dart_array[i])
 #for i in range(0,5):
 #    print ("d" + str(i) +"=" +  str(random.randint(0,2000))
