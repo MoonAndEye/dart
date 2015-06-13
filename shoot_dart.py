@@ -43,7 +43,8 @@ date_d1 = history_list[d1][:-4]
 print (date_d0)
 print (date_d1)
 
-file_d0 = str('C:/1save/jpStock/dart/' + str(date_d0) + '.csv')
+file_d0 = str('C:/1save/jpStock/dart/' + str(date_d0) + '.txt')
+file_d1 = str('C:/1save/jpStock/dart/' + str(date_d1) + '.txt')
 print (file_d0)
 
 d0_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d0])
@@ -58,12 +59,15 @@ for i in range(5):
     #print (dart0[0])
 
     
-    
+"""
 with open(file_d0 , 'xt', encoding = 'shift-jis') as f:
     for i in range(5):
         f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
         
 
+"""
+with open ('C:/1save/jpStock/dart/detail/detail.txt', 'xt', encoding = 'shift-jis') as f:
+    f.write ('test')
 #飛標已經寫完了，回去再生出損益結算的檔案，用txt還是csv 目前還沒有結論。
         #for i in range(0,5):
 #    print ("d" + str(i) +"=" +  str(random.randint(0,2000))
