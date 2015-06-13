@@ -38,11 +38,13 @@ d4 = history_number -5
 print (history_list[d0])
 print (history_list[d1])
 #print (history_list[4])
-date_d0 = history_list[d0][:-4]
+date_d0 = history_list[d0][:-4]  #這是為了給後面的csv檔有日期
 date_d1 = history_list[d1][:-4]
 print (date_d0)
 print (date_d1)
 
+file_d0 = str('C:/1save/jpStock/dart/' + str(date_d0) + '.csv')
+print (file_d0)
 
 d0_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d0])
 d1_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d1])
@@ -55,9 +57,11 @@ for i in range(5):
     dart_array.append(dart0)
     #print (dart0[0])
 
-#with open('C:/1save/jpStock/dart/test.csv', 'xt', encoding = 'shift-jis') as f:
-#    for i in range(5):
-#        f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
+    
+    
+with open(file_d0 , 'xt', encoding = 'shift-jis') as f:
+    for i in range(5):
+        f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
         
 #for i in range(0,5):
 #    print ("d" + str(i) +"=" +  str(random.randint(0,2000))
