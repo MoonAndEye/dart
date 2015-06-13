@@ -63,7 +63,9 @@ with open(file_d0 , 'xt', encoding = 'shift-jis') as f:
     for i in range(5):
         f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
         
-#for i in range(0,5):
+
+#飛標已經寫完了，回去再生出損益結算的檔案，用txt還是csv 目前還沒有結論。
+        #for i in range(0,5):
 #    print ("d" + str(i) +"=" +  str(random.randint(0,2000))
 
 
