@@ -59,15 +59,14 @@ for i in range(5):
     #print (dart0[0])
 
     
-"""
-with open(file_d0 , 'xt', encoding = 'shift-jis') as f:
+
+with open(file_d0 , 'xt', encoding = 'utf-8') as f:
     for i in range(5):
         f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
         
 
-"""
-with open ('C:/1save/jpStock/dart/detail/detail.txt', 'xt', encoding = 'shift-jis') as f:
-    f.write ('test')
+
+
 #飛標已經寫完了，回去再生出損益結算的檔案，用txt還是csv 目前還沒有結論。
         #for i in range(0,5):
 #    print ("d" + str(i) +"=" +  str(random.randint(0,2000))

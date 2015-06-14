@@ -7,67 +7,69 @@ Created on Sat Jun 13 16:28:00 2015
 import os
 import numpy
 
-def csvToArray(day_array):
+def csvToArray(day_array, encode_setting):
     def_array = []
-    with open(day_array, encoding = 'shift-jis') as data_file:
+    with open(day_array, encoding = str(encode_setting)) as data_file:
         for line in data_file:
             def_array.append(line.strip().split(','))
         return def_array
 
+        
 
-dart_name_list = [] #此list放的是之前抽選的結果
+dart_name_list = [] #此list放的是之前抽選的txt結果
 
 for name in os.listdir('C:/1save/jpStock/dart'):
     dart_name_list.append(name)
 
-dart_target = int(len(dart_name_list)) - 3 
+    
+
+dart_target_date = int(len(dart_name_list)) - 3 
 # 上面這個現在是減3，真的在算的時候可能是減2，不能減1，減1是detail
 
 # print (dart_name_list) 
-# print (dart_name_list[dart_target])
+# print (dart_name_list[dart_target_date])
 dart_d1 = [] #dart_d1 是前一天的飛標結果，是個list，裡面存放5個飛標加日期
 
-dart_d1 = csvToArray('C:/1save/jpStock/dart/' + str(dart_name_list[dart_target]))
+dart_d1 = csvToArray('C:/1save/jpStock/dart/' + str(dart_name_list[dart_target_date]), 'utf-8')
 for i in range(1,6):
     dart_d1.pop(i)
 #目前不知道為什麼 dar_d1裡面，每個飛標後面都會出現一個空 list。只好手動消掉他。
 #未來一定要找一下為什麼，可能問題在 飛標原始檔 ，不然就是寫入list那邊
-dart_d1.append(str(dart_name_list[dart_target]))
+dart_d1.append(str(dart_name_list[dart_target_date]))
 #加入日期在 dart_d1[5]，如果以後要debug，可以直接呼叫
 
-for i in range(0,5):
-    print (dart_d1[i][0])
 
+# for i in range(0,5):
+    # print (dart_d1[i][0])
+# 印出前一天射的飛標，只印code
+    
 history_list = []
 
 for name in os.listdir('C:/1save/jpStock/raw'):
     history_list.append(name)
 
 #以下是把d0和歷史資料的位置抓出來，預測是d1，所以算損益要  d1 = d0 +1
-d0index = history_list.index(str(dart_name_list[dart_target])[:-4] + '.csv')
-print (d0index)
+d0index = history_list.index(str(dart_name_list[dart_target_date])[:-4] + '.csv')
+# print (d0index)
 d1index = int(d0index + 1)
-print (d1index)
-print (history_list[d1index]) #這就是目標
+# print (d1index)
+# print (history_list[d1index]) #這就是目標
 
-d1_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d1index])
+d1_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d0index], 'shift-jis')
 #d1_array 是歷史資料的array
 
-benefit_array = []
+dart_result_array = []  #這個 list 放的是隔天射出來的飛標結果
 a = int(len(d1_array))
-print (a)
+# print (a)
 
+dart_target = [] #這個list 放的是目標代碼，不是日期
 
+for target in range(5):
+    for code in range(a):
+        if d1_array[code][0] == dart_d1[target][0]:
+            # print (code) #印出所找到的index是不是真的在list中那個位置
+            dart_result_array.append(d1_array[code])    
 
-for code in range(a):
-    if d1_array[code][0] == '4558-T':
-        print (code)
-        benefit_array.append(d1_array[code])    
+for i in range(5):
+    print (dart_result_array[i]) #印出飛標的結果，是d0的始高安終
 
-print (benefit_array)
-
-    
-"""
-with open ('C:/1save/jpStock/dart/detail/detail.txt', 'at', encoding = 'shift-jis') as f:
-    f.write ('test')
-"""
