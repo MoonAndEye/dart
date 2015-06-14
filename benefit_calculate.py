@@ -12,7 +12,7 @@ def csvToArray(day_array, encode_setting):
     with open(day_array, encoding = str(encode_setting)) as data_file:
         for line in data_file:
             def_array.append(line.strip().split(','))
-        return def_array
+    return def_array
 
         
 
@@ -73,3 +73,17 @@ for target in range(5):
 for i in range(5):
     print (dart_result_array[i]) #印出飛標的結果，是d0的始高安終
 
+benefit_array = []
+total_benefit = 0
+for i in range(5):
+    unit_benefit = float(dart_result_array[i][7]) - float(dart_result_array[i][4])
+    holding_volumn = 1000000/int(dart_result_array[i][4])
+    dart_unit_benefit = holding_volumn * unit_benefit
+    total_benefit = total_benefit + dart_unit_benefit
+    print ('The benefit of %s is %.0f' % (dart_result_array[i][0], dart_unit_benefit))
+    # benefit_array[i].append((dart_result_array[0]))
+#要存的目標[0],[1],[2],[3],[4],[7]
+benefit_ratio = total_benefit / 50000
+
+# print (type(benefit_ratio))
+print ('Total benefit is %.0f jpy, and benefit persentage is %.2f percent' % (total_benefit, benefit_ratio))

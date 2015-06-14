@@ -13,12 +13,12 @@ history_list = []
 d0_array = []
 d1_array = []
 
-def csvToArray(day_array):
+def csvToArray(day_array, encode_setting):
     def_array = []
-    with open(day_array, encoding = 'shift-jis') as data_file:
+    with open(day_array, encoding = str(encode_setting)) as data_file:
         for line in data_file:
             def_array.append(line.strip().split(','))
-        return def_array
+    return def_array
         
 #d0_array = csvToArray('C:/1save/jpStock/raw/2015-06-10.csv')
 
@@ -47,8 +47,8 @@ file_d0 = str('C:/1save/jpStock/dart/' + str(date_d0) + '.txt')
 file_d1 = str('C:/1save/jpStock/dart/' + str(date_d1) + '.txt')
 print (file_d0)
 
-d0_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d0])
-d1_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d1])
+d0_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d0], 'shift-jis')
+d1_array = csvToArray('C:/1save/jpStock/raw/' + history_list[d1], 'shift-jis')
 #print (d0_array[2])
 
 dart_array = []
