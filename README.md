@@ -1,7 +1,7 @@
 # dart
 If we choose stock market's targets like shooting darts. What will the benefit of results? Let's make a evidence to prove it.
 
-股市中有個觀念是這樣的，如果在非常牛逼的市場下，有三組成員用各字的方法去挑選標的。
+股市中有個觀念是這樣的，如果在牛市的市場下，有三組成員用各字的方法去挑選標的。
 
 A 用技術分析
 
