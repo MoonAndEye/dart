@@ -75,7 +75,7 @@ for j in range(5):
         print ('the new target is ' + str(dart_array[j][0]))
     print (str(dart_array[j][0]) + ' is target')
    
-with open(file_d0 , 'at', encoding = 'utf-8') as f:
+with open(file_d0 , 'xt', encoding = 'utf-8') as f: #如果設定成 xt 表示如果檔案已經存在，則不寫入。測試時要改 at
     for i in range(5):
         f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
         
