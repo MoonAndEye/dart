@@ -22,19 +22,19 @@ for name in os.listdir('C:/1save/jpStock/dart'):
 
     
 
-dart_target_date = int(len(dart_name_list)) - 3 
+dart_target_bef_date = int(len(dart_name_list)) - 3 
 # 上面這個現在是減3，真的在算的時候可能是減2，不能減1，減1是detail
 
 # print (dart_name_list) 
-# print (dart_name_list[dart_target_date])
+# print (dart_name_list[dart_target_bef_date])
 dart_d1 = [] #dart_d1 是前一天的飛標結果，是個list，裡面存放5個飛標加日期
 
-dart_d1 = csvToArray('C:/1save/jpStock/dart/' + str(dart_name_list[dart_target_date]), 'utf-8')
+dart_d1 = csvToArray('C:/1save/jpStock/dart/' + str(dart_name_list[dart_target_bef_date]), 'utf-8')
 for i in range(1,6):
     dart_d1.pop(i)
 #目前不知道為什麼 dar_d1裡面，每個飛標後面都會出現一個空 list。只好手動消掉他。
 #未來一定要找一下為什麼，可能問題在 飛標原始檔 ，不然就是寫入list那邊
-dart_d1.append(str(dart_name_list[dart_target_date]))
+dart_d1.append(str(dart_name_list[dart_target_bef_date]))
 #加入日期在 dart_d1[5]，如果以後要debug，可以直接呼叫
 
 
@@ -48,7 +48,7 @@ for name in os.listdir('C:/1save/jpStock/raw'):
     history_list.append(name)
 
 #以下是把d0和歷史資料的位置抓出來，預測是d1，所以算損益要  d1 = d0 +1
-d0index = history_list.index(str(dart_name_list[dart_target_date])[:-4] + '.csv')
+d0index = history_list.index(str(dart_name_list[dart_target_bef_date])[:-4] + '.csv')
 # print (d0index)
 d1index = int(d0index + 1)
 # print (d1index)
@@ -87,13 +87,25 @@ benefit_ratio = total_benefit / 50000
 # print (type(benefit_ratio))
 print ('Total benefit is %.0f jpy, and benefit persentage is %.2f percent' % (total_benefit, benefit_ratio))
 
-write_in = {'benefit':0 , 'date':1}
+"""
+revenue:4462
+date:1
+"""
 
 d1_conclusion = []
 
 for line in open('C:/1save/jpStock/dart/detail/conclusion.txt', 'r', encoding = 'utf-8'):
     d1_conclusion.append(line)
-revenue = str(d1_conclusion[0])[8:]
-date = str(d1_conclusion[1])[5:]
-print ('the revenue is ' + revenue)
-print ('the date is ' + date)
+bef_revenue = str(d1_conclusion[0])[8:]
+bef_date = str(d1_conclusion[1])[5:]
+print ('the bef_revenue is ' + bef_revenue)
+print ('the bef_date is ' + bef_date)
+
+aft_revenue = int(bef_revenue) + int(total_benefit)
+aft_date = int(bef_date) + 1
+write_in = 'revenue:'+str(aft_revenue)+'\n'+'date:'+str(aft_date)
+print ('the aft_revenue is ' + str(aft_revenue))
+print ('the aft_date is ' + str(aft_date))
+file = open('C:/1save/jpStock/dart/detail/conclusion.txt', 'w', encoding = 'utf-8')
+file.write(write_in)
+file.close
