@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Sat Jun 13 16:28:00 2015
-
 """
 
 import os
@@ -87,3 +86,8 @@ benefit_ratio = total_benefit / 50000
 
 # print (type(benefit_ratio))
 print ('Total benefit is %.0f jpy, and benefit persentage is %.2f percent' % (total_benefit, benefit_ratio))
+
+write_in = {'benefit':0 , 'date':1}
+
+with open('C:/1save/jpStock/dart/conclusion.txt', 'at', encoding = 'utf-8') as f:
+    f.write(str(write_in))
