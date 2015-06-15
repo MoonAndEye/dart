@@ -89,5 +89,11 @@ print ('Total benefit is %.0f jpy, and benefit persentage is %.2f percent' % (to
 
 write_in = {'benefit':0 , 'date':1}
 
-with open('C:/1save/jpStock/dart/conclusion.txt', 'at', encoding = 'utf-8') as f:
-    f.write(str(write_in))
+d1_conclusion = []
+
+for line in open('C:/1save/jpStock/dart/detail/conclusion.txt', 'r', encoding = 'utf-8'):
+    d1_conclusion.append(line)
+revenue = str(d1_conclusion[0])[8:]
+date = str(d1_conclusion[1])[5:]
+print ('the revenue is ' + revenue)
+print ('the date is ' + date)
