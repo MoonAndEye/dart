@@ -4,7 +4,7 @@ Created on Sat Jun 13 16:28:00 2015
 """
 
 import os
-import numpy
+#import numpy
 
 def csvToArray(day_array, encode_setting):
     def_array = []
@@ -87,15 +87,18 @@ benefit_ratio = total_benefit / 50000
 # print (type(benefit_ratio))
 print ('Total benefit is %.0f jpy, and benefit persentage is %.2f percent' % (total_benefit, benefit_ratio))
 
+#這邊放第每天結算的資料，如果出問題，則這邊回復
 """
 revenue:4462
 date:1
 """
 
 d1_conclusion = []
-
+#先讀取以前的資料，再做結算累加
 file = open('C:/1save/jpStock/dart/detail/conclusion.txt', 'r', encoding = 'utf-8')
 
+#因為我不確定怎麼讀完後刪除掉以前的資料
+#所以先讀,抓出資料後,關閉,再開,再寫,再關閉(以後解決)
 for line in file:
     d1_conclusion.append(line)
 bef_revenue = str(d1_conclusion[0])[8:]
@@ -103,13 +106,19 @@ bef_date = str(d1_conclusion[1])[5:]
 file.close()
 #!!!注意, close()一定要加括號,不然關不起來,檔案會卡住
 
+#bef表示前一天的資料,先讀進來,再獵今天的標的,再覆寫回去
 print ('the bef_revenue is ' + bef_revenue)
 print ('the bef_date is ' + bef_date)
 
 aft_revenue = int(bef_revenue) + int(total_benefit)
 aft_date = int(bef_date) + 1
+
+#write_in1是第一行, revenue, write_in2是第二行,第幾次飛標
+#因每支飛標以1M jpy計算,一天五支共5M,所以知道射幾次
+#就可以算出獲利百分比 5M x date就是cost
 write_in1 = 'revenue:'+str(aft_revenue)+'\n'
 write_in2 = 'date:'+str(aft_date)
+
 print ('the aft_revenue is ' + str(aft_revenue))
 print ('the aft_date is ' + str(aft_date))
 
