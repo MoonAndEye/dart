@@ -154,7 +154,11 @@ print(detail_array)
 
 detail_file = open('C:/1save/jpStock/dart/detail/detail.txt', 'a', encoding = 'utf-8')
 detail_file.write('\n') #到時候把array放進去
-for i in range(9):
+detail_file.write('date:' + str(detail_array[0]) + '\n')
+detail_file.write('today_revenue:' + str(detail_array[1]) + '\n')
+detail_file.write('accumulate_revenue:' + str(detail_array[2]) + '\n')
+detail_file.write('duration:' + str(detail_array[3]) + '\n')
+for i in range(4,9):
     detail_file.write(str(detail_array[i]))
     detail_file.write('\n')
 detail_file.write('\n')
@@ -162,4 +166,4 @@ detail_file.close()
 
 
 
-print("You sepnt --- %s seconds ---" % (time.time() - start_time))
+print("Run time --- %s seconds ---" % (time.time() - start_time))
