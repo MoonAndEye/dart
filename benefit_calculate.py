@@ -74,12 +74,14 @@ for target in range(5):
 for i in range(5):
     print (dart_result_array[i]) #印出飛標的結果，是d0的始高安終
 
+dart_unit_benefit_array = []
 benefit_array = []
 total_benefit = 0
 for i in range(5):
     unit_benefit = float(dart_result_array[i][7]) - float(dart_result_array[i][4])
     holding_volumn = 1000000/int(dart_result_array[i][4])
     dart_unit_benefit = holding_volumn * unit_benefit
+    dart_unit_benefit_array.append(int(dart_unit_benefit))    
     total_benefit = total_benefit + dart_unit_benefit
     print ('The benefit of %s is %.0f' % (dart_result_array[i][0], dart_unit_benefit))
     # benefit_array[i].append((dart_result_array[0]))
@@ -139,7 +141,8 @@ detail_array.append(str(name)[:-4])
 detail_array.append(int(total_benefit)) #benefit 用於當天結算,revenue用統計
 detail_array.append(aft_revenue)
 detail_array.append(aft_date)
-
+for i in range(5):
+    detail_array.append(dart_unit_benefit_array[i])#不太對,我想要股票代號,名稱,和benefit
 print(detail_array)
 
 """
