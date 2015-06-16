@@ -132,4 +132,22 @@ file.write(write_in2)
 file.close()
 """
 
+#下面開始寫detail_array, 裡面的金額都是 int 型別
+#[0]date, [1]today_revenue, [2]acc_revenue, [3]duration, [4]dart1, [5]dart2, [6]dart3, [7]dart4, [8]dart5
+detail_array = []
+detail_array.append(str(name)[:-4]) 
+detail_array.append(int(total_benefit)) #benefit 用於當天結算,revenue用統計
+detail_array.append(aft_revenue)
+detail_array.append(aft_date)
+
+print(detail_array)
+
+"""
+detail_file = open('C:/1save/jpStock/dart/detail/detail.txt', 'a', encoding = 'utf-8')
+detail_file.write(write_in1) #到時候把array放進去
+detail_file.write(write_in2)
+file.close()
+"""
+
+
 print("You sepnt --- %s seconds ---" % (time.time() - start_time))
