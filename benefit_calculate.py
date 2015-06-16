@@ -158,7 +158,7 @@ for i in range(9):
     detail_file.write(str(detail_array[i]))
     detail_file.write('\n')
 detail_file.write('\n')
-file.close()
+detail_file.close()
 
 
 
