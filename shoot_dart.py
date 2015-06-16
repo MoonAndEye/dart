@@ -3,8 +3,8 @@
 """
 Created on Fri Jun 12 11:45:30 2015
 """
-import os, random
-
+import os, random, time
+start_time = time.time()
 
 display_list = []
 history_list = []
@@ -87,3 +87,4 @@ else:
     import benefit_calculate
     exec('benefit_calculate')
 
+print("Run time --- %s seconds ---" % (time.time() - start_time))
