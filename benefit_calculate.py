@@ -94,18 +94,27 @@ date:1
 
 d1_conclusion = []
 
-for line in open('C:/1save/jpStock/dart/detail/conclusion.txt', 'r', encoding = 'utf-8'):
+file = open('C:/1save/jpStock/dart/detail/conclusion.txt', 'r', encoding = 'utf-8')
+
+for line in file:
     d1_conclusion.append(line)
 bef_revenue = str(d1_conclusion[0])[8:]
 bef_date = str(d1_conclusion[1])[5:]
+file.close()
+#!!!注意, close()一定要加括號,不然關不起來,檔案會卡住
+
 print ('the bef_revenue is ' + bef_revenue)
 print ('the bef_date is ' + bef_date)
 
 aft_revenue = int(bef_revenue) + int(total_benefit)
 aft_date = int(bef_date) + 1
-write_in = 'revenue:'+str(aft_revenue)+'\n'+'date:'+str(aft_date)
+write_in1 = 'revenue:'+str(aft_revenue)+'\n'
+write_in2 = 'date:'+str(aft_date)
 print ('the aft_revenue is ' + str(aft_revenue))
 print ('the aft_date is ' + str(aft_date))
+
+
 file = open('C:/1save/jpStock/dart/detail/conclusion.txt', 'w', encoding = 'utf-8')
-file.write(write_in)
-file.close
+file.write(write_in1)
+file.write(write_in2)
+file.close()
