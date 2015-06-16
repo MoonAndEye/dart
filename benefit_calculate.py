@@ -4,6 +4,8 @@ Created on Sat Jun 13 16:28:00 2015
 """
 
 import os
+import time
+start_time = time.time()
 #import numpy
 
 def csvToArray(day_array, encode_setting):
@@ -23,7 +25,7 @@ for name in os.listdir('C:/1save/jpStock/dart'):
     
 
 dart_target_bef_date = int(len(dart_name_list)) - 3 
-# 上面這個現在是減3，真的在算的時候可能是減2，不能減1，減1是detail
+# 上面這個是標的日期,現在是減3，真的在算的時候可能是減2，不能減1，減1是detail
 
 # print (dart_name_list) 
 # print (dart_name_list[dart_target_bef_date])
@@ -122,8 +124,12 @@ write_in2 = 'date:'+str(aft_date)
 print ('the aft_revenue is ' + str(aft_revenue))
 print ('the aft_date is ' + str(aft_date))
 
-
+#先寫detail報告,再把下面這個打開
+"""
 file = open('C:/1save/jpStock/dart/detail/conclusion.txt', 'w', encoding = 'utf-8')
 file.write(write_in1)
 file.write(write_in2)
 file.close()
+"""
+
+print("You sepnt --- %s seconds ---" % (time.time() - start_time))
