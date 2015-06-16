@@ -133,12 +133,12 @@ print ('the aft_revenue is ' + str(aft_revenue))
 print ('the aft_date is ' + str(aft_date))
 
 #先寫detail報告,再把下面這個打開
-"""
+
 file = open('C:/1save/jpStock/dart/detail/conclusion.txt', 'w', encoding = 'utf-8')
 file.write(write_in1)
 file.write(write_in2)
 file.close()
-"""
+
 
 #下面開始寫detail_array, 裡面的金額都是 int 型別
 #[0]date, [1]today_revenue, [2]acc_revenue, [3]duration, [4]dart1, [5]dart2, [6]dart3, [7]dart4, [8]dart5
