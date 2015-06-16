@@ -76,13 +76,19 @@ for i in range(5):
 
 dart_unit_benefit_array = []
 benefit_array = []
+#bef_merge_array = [] #這個array存放 1> 代號 2>名稱 3>benefit
 total_benefit = 0
 for i in range(5):
+    bef_merge_array = []
     unit_benefit = float(dart_result_array[i][7]) - float(dart_result_array[i][4])
     holding_volumn = 1000000/int(dart_result_array[i][4])
     dart_unit_benefit = holding_volumn * unit_benefit
-    dart_unit_benefit_array.append(int(dart_unit_benefit))    
     total_benefit = total_benefit + dart_unit_benefit
+    # 這一行開始寫入dart_unit_benefit_array
+    bef_merge_array.append(dart_result_array[i][0])
+    bef_merge_array.append(dart_result_array[i][2])
+    bef_merge_array.append(int(dart_unit_benefit))
+    dart_unit_benefit_array.append(bef_merge_array)     
     print ('The benefit of %s is %.0f' % (dart_result_array[i][0], dart_unit_benefit))
     # benefit_array[i].append((dart_result_array[0]))
 #要存的目標[0],[1],[2],[3],[4],[7]
@@ -145,12 +151,15 @@ for i in range(5):
     detail_array.append(dart_unit_benefit_array[i])#不太對,我想要股票代號,名稱,和benefit
 print(detail_array)
 
-"""
+
 detail_file = open('C:/1save/jpStock/dart/detail/detail.txt', 'a', encoding = 'utf-8')
-detail_file.write(write_in1) #到時候把array放進去
-detail_file.write(write_in2)
+detail_file.write('\n') #到時候把array放進去
+for i in range(9):
+    detail_file.write(str(detail_array[i]))
+    detail_file.write('\n')
+detail_file.write('\n')
 file.close()
-"""
+
 
 
 print("You sepnt --- %s seconds ---" % (time.time() - start_time))
