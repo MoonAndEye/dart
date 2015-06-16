@@ -74,17 +74,16 @@ for j in range(5):
         dart_array[j] = random.choice(d0_array) #這一行不能用random.sample,這指令會回傳list,造成indexError
         print ('the new target is ' + str(dart_array[j][0]))
     print (str(dart_array[j][0]) + ' is target')
-   
-with open(file_d0 , 'xt', encoding = 'utf-8') as f: #如果設定成 xt 表示如果檔案已經存在，則不寫入。測試時要改 at
-    for i in range(5):
-        f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
-        
 
+check = os.path.isfile(file_d0)
 
-#飛標已經寫完了，回去再生出損益結算的檔案，用txt還是csv 目前還沒有結論。
-        #for i in range(0,5):
-#    print ("d" + str(i) +"=" +  str(random.randint(0,2000))
+if check == True:
+    print ('You already shooted darts.\nThe new darts results won\'t come out.')
+    
+else:
+    with open(file_d0 , 'xt', encoding = 'utf-8') as f: #如果設定成 xt 表示如果檔案已經存在，則不寫入。測試時要改 at
+        for i in range(5):
+            f.write(str(dart_array[i]).replace('\'', '')[1:-1] + '\n\r')
+    import benefit_calculate
+    exec('benefit_calculate')
 
-
-#for i in range(5):
-#        print (str(dart_array[i]).replace('\'', '')[1:-1])
