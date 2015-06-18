@@ -3,11 +3,11 @@
 Created on Sat Jun 13 16:28:00 2015
 """
 
-import os
+import os, sys
 import time
 start_time = time.time()
 #import numpy
-
+#sys.stdout.buffer.write(bytes(你的字串,'shift_jisx0213'))
 def csvToArray(day_array, encode_setting):
     def_array = []
     with open(day_array, encoding = str(encode_setting)) as data_file:
@@ -72,7 +72,10 @@ for target in range(5):
             dart_result_array.append(d1_array[code])    
 
 for i in range(5):
-    print (dart_result_array[i]) #印出飛標的結果，是d0的始高安終
+    result = str(dart_result_array[i])
+    #print (sys.stdout.buffer.write(bytes(result,'shift_jisx0213')))
+    #這邊不能印，一印就是 unicodeError
+    #print (dart_result_array[i]) #印出飛標的結果，是d0的始高安終
 
 dart_unit_benefit_array = []
 benefit_array = []
