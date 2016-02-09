@@ -1,5 +1,16 @@
 # New dart
 
+init_funding = 1000000 #一百萬 JPY 為起始資金
+
+rand_choose_darts_quantity = Y/N #是否以亂數決定買的數量?
+rand_quantity_range_min = (int) #如果以亂數決定買的數量，設定範圍(下限)
+rand_quantity_range_max = (int) #如果以亂數決定買的數量，設定範圍(上限)
+
+not_rand_quantity = (int) #如果不是用亂數決定買的數量，那一次會買幾支?
+buy_for_every_dart = (int) #每個標的用多少金額購買
+
+duration = 0 or 1 #設定起始點，如果是0，則表示程式從末開始，是第一次射飛標，或許這個名稱不用設
+
 -----------------------------------以下是舊的版本-------------------------------------------------
 # dart
 If we choose stock market's targets like shooting darts. What will the benefit of results? Let's make a evidence to prove it.
