@@ -13,6 +13,9 @@ duration = 0 or 1 #設定起始點，如果是0，則表示程式從末開始，
 
 不確定要更新什麼
 
+可能要連續開三個不同的核心飛鏢
+
+
 -----------------------------------以下是舊的版本-------------------------------------------------
 # dart
 If we choose stock market's targets like shooting darts. What will the benefit of results? Let's make a evidence to prove it.
