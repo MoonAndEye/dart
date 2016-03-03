@@ -1,6 +1,6 @@
 怎麼在readme 裡面畫流程圖?
 
-# New dart
+# darts 2.0
 
 init_funding = 1000000 #一百萬 JPY 為起始資金
 
