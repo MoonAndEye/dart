@@ -18,7 +18,7 @@ d1_array = []
 
 #history_list 放的是歷史資料,裡面順序從遠排到近
 history_list = []
-for name in os.listdir('C:/1save/jpStock/raw/rawPython'):
+for name in os.listdir('C:/1save/jpStock/rawPython'):
     history_list.append(name)
 
 #選擇要選個數,排序很花時間,一定要-1，因為array一直是從0開始算    
@@ -44,8 +44,8 @@ file_d1 = str('C:/1save/jpStock/dart/' + str(date_d1) + '.txt')
 #print ('The darts results were saved in ' + str(file_d0))
 
 #把d0內的資料轉成2d array,注意一定要用 shift-jis,否則編碼會錯誤
-d0_array = csvToArray('C:/1save/jpStock/raw/rawPython/' + history_list[d0], 'shift-jis')
-d1_array = csvToArray('C:/1save/jpStock/raw/rawPython/' + history_list[d1], 'shift-jis')
+d0_array = csvToArray('C:/1save/jpStock/rawPython/' + history_list[d0], 'shift-jis')
+d1_array = csvToArray('C:/1save/jpStock/rawPython/' + history_list[d1], 'shift-jis')
 #print (d0_array[2])
 
 
@@ -91,3 +91,10 @@ else:
     exec('benefit_calculate')#import完後,執行即可
 """
 
+holding_stock = []
+
+for each in dart_array:
+    holding_stock.append(each[0])
+holding_stock = throw_dice(holding_stock,judgement_dice)
+    
+print (holding_stock)
