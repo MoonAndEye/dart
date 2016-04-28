@@ -6,7 +6,7 @@ import datetime
 
 d0 = datetime.date.today() #d0 是今天
 
-d0 = d0 - datetime.timedelta(days = 1)   #如果以後要換日期，就用這個
+d0 = d0 - datetime.timedelta(days = 3)   #如果以後要換日期，就用這個
 
 start = d0
 """
@@ -18,6 +18,9 @@ http://www.jpx.co.jp/markets/statistics-equities/misc/tvdivq0000001vg2-att/data_
 #toyota_nyse = web.DataReader('TM', 'yahoo', start=start)
 
 def get_quote_yahoojp(code, start=None, end=None, interval='d'):
+    """
+    注意,不能在start和end注入,沒有開盤的日子，不然他
+    """
     base = 'http://info.finance.yahoo.co.jp/history/?code={0}.T&{1}&{2}&tm={3}&p={4}'
     start, end = web._sanitize_dates(start, end)
     start = 'sy={0}&sm={1}&sd={2}'.format(start.year, start.month, start.day)
@@ -56,7 +59,7 @@ dartsAftShuffle = []
 
 while len(dartsAftShuffle) <5:
     try:
-        null_tse = get_quote_yahoojp(darts[0], start=start)
+        null_tse = get_quote_yahoojp(darts[0], start=start,end = start)
         null_tse.head()
         dartsAftShuffle.append(null_tse.head())
         del darts[0]
@@ -65,3 +68,8 @@ while len(dartsAftShuffle) <5:
 
 print(dartsAftShuffle)
 print(darts[:5])
+
+temp = list(dartsAftShuffle[1].values.tolist())
+print(temp)
+
+    
