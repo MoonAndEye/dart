@@ -6,21 +6,23 @@ Created on Thu Apr 28 23:45:56 2016
 """
 
 from holidays_jp import CountryHolidays
-# get japanese holidays in 2015.
-holidays = CountryHolidays.get('JP', 2016)
 
-print(holidays[0][0])
-a = holidays[0][0]
 
-print(a.strftime("%Y-%m-%d"))
+def holidaysList(year):
+    """
+    input 4 digit in year
+    """
+    holidays = CountryHolidays.get('JP',int(year))
+    
+    return_list = []
+    
+    for i in holidays:
+        return_list.append(i[0].strftime("%Y-%m-%d"))
+    return(return_list)
 
-b = a.strftime("%Y")
-print(b)
+"""below is test
+    
+x = holidaysList(2016)
 
-holidays_b = CountryHolidays.get('JP', int(b))
-#print(holidays_b)
-
-year_holidays = []
-for i in holidays_b:
-    foo = i[0]
-    year_holidays.append(foo.strftime("%Y-%m-%d"))
+print(x)
+"""
